@@ -33,23 +33,23 @@ public class FileProcessor {
 			
 			while((line = reader.readLine()) != null)
 			{
+				try
+				{
 				if(line.length() > stringLength)
 				{
 					throw new StringTooLongException();
 				}//end if
-				else System.out.println(line);		
-			}//end while
-			reader.close();
-		}//end try
+				else System.out.println(line);					
+				}
+				catch(StringTooLongException s) 
+				{
+				System.out.println(s.getMessage());
+				}//end catch
+			}}//end try/while
 		catch(IOException e) 
 			{
 			System.out.println(e.getMessage());
-			processFile();
-			}//end catch
-		catch(StringTooLongException e)
-			{
-			System.out.println(e.getMessage());
-			}//end catch
+			}//end catch	
 		}//end processFile
 
 	public String getFileName() 
